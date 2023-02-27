@@ -1,12 +1,13 @@
+#imports
 import pygame, sys, random
 pygame.init()
 
 
-# RGB Red Green Blue
+# RGB Red Green Blue (constants)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 GREEN = (0, 155, 0)
-
+#Game variables and Constants
 X = 900
 Y = 600
 screen = pygame.display.set_mode((X, Y),pygame.RESIZABLE)
@@ -18,6 +19,7 @@ acc = 1
 TotalC=0
 TargetC=3
 stop=False
+#Game objects classes
 class Coins:
     def __init__(self,x,y):
         self.Coin=pygame.image.load('coin.png')
@@ -239,7 +241,7 @@ class Portal:
                 for event in pygame.event.get():
                     if event.type==pygame.QUIT:
                         run=False
-                
+#Calling of classes              
 run=True
 platforms = []
 platforms.append(Platform(X, 100, 450, Y, GREEN))
@@ -249,7 +251,6 @@ platforms.append(Platform(250, 15, 480, 260, GREEN))
 platforms.append(Platform(300, 15, 150, 180, GREEN))
 platforms.append(Platform(300, 15, 500, 100, GREEN))
 platforms.append(Platform(80, 15, 830, 260, GREEN))
-#Yes
 platforms.append(Platform(80, 15, 650, 340, GREEN))
 
 coins=[]
@@ -278,11 +279,11 @@ enemys.append(Enemy(400,15))
 enemys.append(Enemy(200,15))
 
 portals=[Portal(500,520)]
-
+#Game loop
 while run:
     clock.tick(30)
     screen.fill(BLACK)
-
+    #Calling class functionsa
     player.event()
     player.move()
     player.draw()
@@ -305,8 +306,8 @@ while run:
         portal.Check()
         portal.Draw()
         portal.Detect()
-
+    #Update display
     pygame.display.flip()
 
-
+#quit if quited
 pygame.quit()
